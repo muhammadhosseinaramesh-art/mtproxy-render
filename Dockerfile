@@ -1,7 +1,10 @@
-FROM telegrammessenger/mtproxy
+# استفاده از یک Docker image عمومی MTProxy
+FROM alexbers/mtprotoproxy
 
+# متغیرهای محیطی
 ENV MTSECRET="0123456789abcdef0123456789abcdef"
 ENV MTPROXY_TAG="492b25d95be6fcfc9347a0dbcb67918a"
 ENV MTPROXY_PORT=443
 
-CMD ["mtproto-proxy", "--addr=0.0.0.0:443", "--secret=${MTSECRET}", "--tag=${MTPROXY_TAG}", "--allow-skip-dh=0", "--aes-pwd", "/proxy-secret", "/proxy-multi.conf"]
+# اجرای MTProxy با Secret و AdTag
+CMD ["mtproto-proxy", "--addr=0.0.0.0:443", "--secret=${MTSECRET}", "--tag=${MTPROXY_TAG}", "--allow-skip-dh=0"]
